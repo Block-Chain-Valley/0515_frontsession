@@ -15,8 +15,10 @@ function App() {
   const isToggle = useRecoilValue(isToggleAtom);
   const setToggleAtom = useSetRecoilState(isToggleAtom);
   const toggle = () => setToggleAtom((prev) => !prev);
+
+  const [name, setName] = useState("Enter");
   const nameInput = useInput({ initialValue: "" });
-  const isEnterPressed = useKeyPress("Enter");
+  const isEnterPressed = useKeyPress(name);
 
   return (
     <>
@@ -51,6 +53,7 @@ function App() {
         <p>
           Enter 키가 눌렸는지 여부: {isEnterPressed ? "눌렸음" : "눌리지 않음"}
         </p>
+        <button onClick={() => setName("shift")}>Toggle Mode</button>
       </div>
     </>
   );
